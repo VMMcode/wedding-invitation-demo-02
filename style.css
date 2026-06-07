@@ -1,0 +1,1114 @@
+/* --- Подключение шрифтов --- */
+@font-face {
+  font-family: "Brusher";
+  src: url("fonts/Brusher-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Doloman";
+  src: url("fonts/DolomanPavljenkoLight.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
+}
+
+/* --- Обнуление стилей --- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%; /* 1rem = 10px */
+  line-height: 1;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  font-size: 1.6rem;
+  font-family: var(--t-font);
+  color: var(--text-color);
+  min-height: 100vh;
+  background-color: var(--bg-color);
+}
+
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+  border: none;
+  background: none;
+  outline: none;
+  appearance: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: inherit;
+  font-size: inherit;
+}
+
+/* --- Переменные --- */
+:root {
+  --bg-color: #fffced;
+  --text-color: #3a5220;
+  --accent-color: #ad1b1f;
+  --h-font: "Brusher", sans-serif;
+  --t-font: "Doloman", sans-serif;
+  --tb-padding: 5rem 0;
+}
+
+/* --- Контейнер и main стили --- */
+section {
+  padding: var(--tb-padding);
+}
+
+.container {
+  width: 100%;
+  max-width: clamp(32rem, 90vw, 44rem);
+  margin: 0 auto;
+  padding: 0 clamp(1.6rem, 4vw, 2rem);
+}
+
+/* --- Promo секция --- */
+.promo {
+  height: 100dvh;
+}
+
+.promo__inner {
+  height: calc(100dvh - 8rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: end;
+  gap: 1rem;
+  background: url("img/bow-img.webp") no-repeat top center / contain;
+  position: relative;
+}
+
+.promo__title {
+  font-family: var(--h-font);
+  font-size: 6rem;
+  text-align: center;
+}
+
+.promo__img {
+  position: relative;
+  height: 35rem;
+  z-index: 1;
+  margin-top: -4rem;
+}
+.promo__img img {
+  display: block;
+  width: auto;
+  height: 100%;
+}
+.promo__img img:first-child {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  animation: pulse 7.5s infinite linear;
+}
+.promo__img img:last-child {
+  height: 34rem;
+  position: relative;
+  z-index: 5;
+  margin: 0 auto;
+}
+
+.promo__music {
+  width: 100%;
+  height: 8.5rem;
+  background: url("img/promo-btn.svg") no-repeat center / contain;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  position: relative;
+  z-index: 1;
+  margin-top: -3rem;
+}
+
+.promo__music-text {
+  font-family: var(--h-font);
+  font-size: 3.2rem;
+  color: var(--bg-color);
+  text-transform: lowercase;
+}
+
+.promo__music-play {
+  width: 2.4rem;
+  height: 2.4rem;
+  cursor: pointer;
+  position: relative;
+}
+.promo__music-icon {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+/* По умолчанию (пауза) показываем play, прячем pause */
+.promo__music-icon--pause {
+  display: none;
+}
+/* Когда играет — меняем местами */
+.promo__music-play.is-playing .promo__music-icon--play {
+  display: none;
+}
+.promo__music-play.is-playing .promo__music-icon--pause {
+  display: block;
+}
+
+.promo__down {
+  margin: 0 auto;
+}
+.promo__down a {
+  display: block;
+  width: 3rem;
+  height: 3rem;
+}
+.promo__down a svg {
+  width: 100%;
+  height: 100%;
+}
+
+.promo__decor {
+  width: auto;
+  height: auto;
+  display: block;
+  position: absolute;
+}
+
+.promo__decor:nth-of-type(1) {
+  width: 4.5rem;
+  top: 5.5rem;
+  right: 8rem;
+  animation: bird-boy 7.5s infinite linear;
+}
+.promo__decor:nth-of-type(2) {
+  width: 4.5rem;
+  top: 17.5rem;
+  left: 7rem;
+  transform: rotate(-5deg);
+  animation: bird-girl 7.5s infinite linear;
+}
+.promo__decor:nth-of-type(3) {
+  top: 5rem;
+  left: 4rem;
+  animation: pulse 4.5s infinite linear;
+}
+.promo__decor:nth-of-type(4) {
+  top: 15rem;
+  right: 3rem;
+  animation: pulse 4.5s infinite linear;
+}
+.promo__decor:nth-of-type(5) {
+  top: 22rem;
+  right: 10rem;
+  animation: pulse 4.5s infinite linear;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1, 1);
+  }
+  15% {
+    transform: scale(0.9, 0.9);
+  }
+  30% {
+    transform: scale(1, 1);
+  }
+  50% {
+    transform: scale(0.9, 0.9);
+  }
+  65% {
+    transform: scale(1, 1);
+  }
+  85% {
+    transform: scale(0.9, 0.9);
+  }
+  100% {
+    transform: scale(1, 1);
+  }
+}
+
+@keyframes bird-boy {
+  0% {
+    transform: rotate(10deg);
+  }
+  15% {
+    transform: rotate(2deg);
+  }
+  30% {
+    transform: rotate(10deg);
+  }
+  50% {
+    transform: rotate(2deg);
+  }
+  65% {
+    transform: rotate(10deg);
+  }
+  85% {
+    transform: rotate(2deg);
+  }
+  100% {
+    transform: rotate(10deg);
+  }
+}
+
+@keyframes bird-girl {
+  0% {
+    transform: rotate(-10deg);
+  }
+  15% {
+    transform: rotate(-2deg);
+  }
+  30% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(-2deg);
+  }
+  65% {
+    transform: rotate(-10deg);
+  }
+  85% {
+    transform: rotate(-2deg);
+  }
+  100% {
+    transform: rotate(-10deg);
+  }
+}
+
+/* --- Greeting секция --- */
+.greeting__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  position: relative;
+}
+
+.greeting__title {
+  font-family: var(--h-font);
+  font-size: 3.2rem;
+  margin-bottom: 2rem;
+}
+
+.greeting__text {
+  max-width: 32rem;
+}
+
+.greeting__icon {
+  margin: 0 auto;
+  animation: pulse 7.5s infinite linear;
+}
+
+.greeting__decor {
+  width: auto;
+  height: auto;
+  display: block;
+  position: absolute;
+}
+.greeting__decor:first-of-type {
+  top: -1rem;
+  right: 10rem;
+  animation: star-rotate 14s infinite linear;
+}
+.greeting__decor:last-of-type {
+  width: 1rem;
+  top: 6.5rem;
+  left: 6.5rem;
+  animation: star-rotate 14s infinite linear;
+}
+
+@keyframes star-rotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* --- Calendar секция --- */
+.calendar__inner {
+  height: 50rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  background: url(img/calendar-decor.webp) no-repeat center / 100% auto;
+  position: relative;
+}
+
+.calendar__decor {
+  position: absolute;
+  width: auto;
+  height: auto;
+}
+.calendar__decor:nth-child(1) {
+  top: 13rem;
+  left: -3%;
+  animation: pulse 4.5s infinite linear;
+}
+.calendar__decor:nth-child(2) {
+  bottom: 6.5rem;
+  right: 20%;
+  transform: rotate(-15deg);
+}
+.calendar__decor:nth-child(3) {
+  width: 3.5rem;
+  top: 2rem;
+  right: 6.5%;
+  animation: pulse 4.5s infinite linear;
+}
+.calendar__decor:nth-child(4) {
+  width: 3rem;
+  bottom: 13.5rem;
+  right: -5%;
+  animation: star-rotate 4.5s infinite linear;
+}
+.calendar__decor:nth-child(5) {
+  width: 1.5rem;
+  bottom: 3rem;
+  left: 10%;
+  animation: star-rotate 4.5s infinite linear;
+}
+
+.calendar__decor--line path {
+  stroke-dasharray: var(--len, 400) var(--len, 400);
+  stroke-dashoffset: var(--len, 400);
+}
+.calendar.is-visible .calendar__decor--line path {
+  animation: line-flow 3.5s linear infinite;
+}
+
+@keyframes line-flow {
+  0% {
+    stroke-dashoffset: var(--len, 400);
+  }
+  30% {
+    stroke-dashoffset: 0;
+  }
+  55% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: var(--len-neg, -400);
+  }
+}
+
+.calendar__title {
+  font-family: var(--h-font);
+  font-size: 3.2rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.calendar__grid {
+  width: 80%;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  grid-template-rows: 3.5rem 1fr 1fr 1fr 1fr 1fr;
+  gap: 2.5rem 0.5rem;
+}
+
+.calendar__item {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.calendar__item--week {
+  font-family: var(--h-font);
+  font-size: 2rem;
+}
+
+.calendar__item--heart {
+  position: relative;
+  color: var(--bg-color);
+}
+.calendar__item--heart::before {
+  content: "";
+  position: absolute;
+  width: 4rem;
+  height: 3.5rem;
+  top: 51%;
+  left: 52%;
+  transform: translate(-50%, -50%);
+  z-index: -1;
+  background: url("img/heart-icon.svg") no-repeat center / contain;
+}
+
+.calendar__item--active.calendar__item--heart::before {
+  animation: calendar-pulse 6.5s infinite linear;
+}
+
+@keyframes calendar-pulse {
+  0% {
+    transform: translate(-50%, -50%) scale(1, 1);
+  }
+  15% {
+    transform: translate(-50%, -50%) scale(0.9, 0.9);
+  }
+  30% {
+    transform: translate(-50%, -50%) scale(1, 1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(0.9, 0.9);
+  }
+  65% {
+    transform: translate(-50%, -50%) scale(1, 1);
+  }
+  85% {
+    transform: translate(-50%, -50%) scale(0.9, 0.9);
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1, 1);
+  }
+}
+
+/* --- Location секция --- */
+.location .container {
+  padding-inline: 0;
+}
+
+.location__inner {
+  width: 100%;
+  min-height: 64rem;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.location__title {
+  font-family: var(--h-font);
+  font-size: 3.2rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.location__lights {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.location__content {
+  padding: 0 clamp(1.6rem, 4vw, 2rem);
+  padding-top: 6.5rem;
+  width: 80%;
+  min-height: 28rem;
+  position: relative;
+  overflow: visible;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: start;
+  gap: 0.5rem;
+  color: var(--bg-color);
+}
+.location__content--top {
+  margin-right: 13rem;
+}
+.location__content--bottom {
+  margin-left: 13rem;
+  margin-top: -13.5rem;
+}
+
+.location__bg {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  z-index: -1;
+  filter: drop-shadow(0 0 6px rgba(0, 0, 0, 0.6));
+}
+.location__content--top .location__bg {
+  transform: translate(-50%, -50%) rotate(5deg);
+}
+.location__content--bottom .location__bg {
+  transform: translate(-50%, -50%) rotate(-5deg);
+}
+
+.location__heading {
+  text-align: center;
+}
+
+.location__text {
+  text-align: center;
+}
+
+.location__link {
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-top: 2rem;
+  transition: transform 0.3s ease-in-out;
+}
+.location__link:hover {
+  transform: translateY(-4px);
+}
+
+.location__person {
+  display: block;
+  width: 35%;
+  height: auto;
+  position: absolute;
+  opacity: var(--p, 1);
+  will-change: transform, opacity;
+}
+.location__person--left {
+  bottom: 0;
+  left: -9.5%;
+  transform: translateX(calc((var(--p, 1) - 1) * 130%));
+}
+.location__person--right {
+  top: 13rem;
+  right: -9.5%;
+  transform: translateX(calc((1 - var(--p, 1)) * 130%));
+}
+
+.lamp-light {
+  opacity: 0;
+}
+.lamp-shine {
+  opacity: 0;
+  transform-box: fill-box;
+  transform-origin: center;
+  transform: scale(0.7);
+}
+.location.is-lit .lamp-light {
+  animation: lamp-light-on 0.3s calc(var(--i) * 0.45s) both;
+}
+.location.is-lit .lamp-shine {
+  animation: lamp-shine-on 0.45s calc(var(--i) * 0.45s + 0.25s) both;
+}
+
+@keyframes lamp-light-on {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes lamp-shine-on {
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .location.is-lit .lamp-light,
+  .location.is-lit .lamp-shine {
+    animation: none;
+    opacity: 1;
+  }
+  .location.is-lit .lamp-shine {
+    transform: scale(1);
+  }
+}
+
+/* --- Timing секция --- */
+.timing__inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 4rem;
+}
+
+.timing__title {
+  font-family: var(--h-font);
+  font-size: 3.2rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.timing__list {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  align-items: center;
+}
+
+.timing__item {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  align-items: center;
+  text-align: center;
+}
+
+.timing__label {
+  font-family: var(--h-font);
+  font-size: 1.8rem;
+}
+
+.timing__time {
+  font-family: var(--h-font);
+  font-size: 3.8rem;
+}
+
+.timing__text {
+  line-height: 1.2;
+}
+
+.timing__path {
+  position: absolute;
+  bottom: -26px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 23rem;
+  height: auto;
+  pointer-events: none;
+  overflow: visible;
+  z-index: 1;
+}
+.timing__path #timingArrowPath {
+  fill: none;
+  stroke: none;
+}
+
+.timing__arrow {
+  fill: var(--accent-color);
+}
+
+.timing__decor {
+  position: absolute;
+  will-change: transform;
+}
+
+.timing__decor--amur,
+.timing__decor--rings,
+.timing__decor--cake {
+  transform: translateX(calc((var(--enter, 1) - 1) * 2rem));
+}
+.timing__decor--registration,
+.timing__decor--food,
+.timing__decor--pigeon {
+  transform: translateX(calc((1 - var(--enter, 1)) * 2rem));
+}
+
+.timing__decor--amur {
+  width: 12rem;
+  top: 1.5rem;
+  left: 0rem;
+}
+
+.timing__decor--registration {
+  width: 12rem;
+  top: 12rem;
+  right: 0rem;
+}
+.timing__decor--rings {
+  width: 8rem;
+  top: 24.5rem;
+  left: 3rem;
+}
+.timing__decor--food {
+  width: 6rem;
+  top: 41rem;
+  right: 5rem;
+}
+.timing__decor--cake {
+  width: 10rem;
+  top: 56rem;
+  left: 2.5rem;
+}
+.timing__decor--pigeon {
+  width: 7.5rem;
+  bottom: -4rem;
+  right: 2.5rem;
+}
+
+/* --- Wish секция --- */
+.wish__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.wish__title {
+  font-family: var(--h-font);
+  font-size: 3.2rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.wish__content {
+  display: flex;
+  flex-direction: column;
+  gap: 5rem;
+  align-items: center;
+  justify-content: end;
+  padding-bottom: 1.8rem;
+  color: var(--bg-color);
+  text-align: center;
+  height: 32rem;
+  position: relative;
+  isolation: isolate; /* чтобы фон-псевдоэлемент остался под текстом этой секции */
+}
+
+/* Фоновая картинка вынесена в псевдоэлемент — чтобы плавно «дышать»
+   через transform: scale (фон так анимировать нельзя). */
+.wish__content::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: url("img/flower-icon.svg") no-repeat center / contain;
+  transform-origin: center;
+  will-change: transform;
+  animation: breathe 5s ease-in-out infinite;
+}
+
+/* минимальный «вдох-выдох» */
+@keyframes breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.025);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wish__content::before {
+    animation: none;
+  }
+}
+
+.wish__text {
+  width: 60%;
+  line-height: 1.3;
+}
+
+.wish__link {
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-left: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+.wish__link:hover {
+  transform: translateY(-4px);
+}
+
+/* --- Survey секция --- */
+.survey__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+  position: relative;
+}
+
+.survey__title {
+  font-family: var(--h-font);
+  font-size: 3.2rem;
+  text-transform: uppercase;
+}
+
+.survey__text {
+  width: 100%;
+  font-size: 1.6rem;
+  line-height: 1.3;
+}
+
+.survey__form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 1rem;
+}
+
+.survey__field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  text-align: left;
+}
+
+.survey__input {
+  width: 100%;
+  padding: 0.6rem 0.8rem;
+  font-size: 1.7rem;
+  color: var(--text-color);
+  background: transparent;
+  border-bottom: 1px solid rgba(58, 82, 32, 0.35);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.survey__input::placeholder {
+  font-size: 1.4rem;
+  color: rgba(58, 82, 32, 0.4);
+}
+.survey__input:hover {
+  border-bottom-color: rgba(58, 82, 32, 0.6);
+}
+.survey__input:focus {
+  border-bottom-color: var(--text-color);
+  box-shadow: 0 1px 0 0 var(--text-color);
+}
+
+.survey__group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  text-align: left;
+  padding: 1.5rem 2.5rem;
+  border-radius: 5px;
+  border: 1px solid rgba(58, 82, 32, 0.3);
+}
+
+.survey__legend {
+  font-size: 1.8rem;
+  margin-bottom: 0.4rem;
+  padding-inline: 1rem;
+  background-color: var(--bg-color);
+}
+
+.survey__option {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  width: fit-content;
+  cursor: pointer;
+  transition: color 0.2s ease;
+}
+.survey__option:hover {
+  color: #2e4019;
+}
+
+.survey__radio {
+  width: 1.8rem;
+  height: 1.8rem;
+  flex-shrink: 0;
+  border: 1.5px solid var(--text-color);
+  border-radius: 50%;
+  cursor: pointer;
+  transition:
+    box-shadow 0.2s ease,
+    background-color 0.2s ease;
+}
+.survey__option:hover .survey__radio {
+  box-shadow: 0 0 0 3px rgba(58, 82, 32, 0.15);
+}
+.survey__radio:checked {
+  background-color: var(--text-color);
+}
+.survey__radio:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: 2px;
+}
+
+.survey__submit {
+  align-self: center;
+  margin-top: 1rem;
+  padding: 1.2rem 4rem;
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--bg-color);
+  background-color: var(--text-color);
+  border-radius: 2px;
+  cursor: pointer;
+  transition:
+    transform 0.25s ease,
+    background-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+.survey__submit:hover {
+  background-color: #2e4019;
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(58, 82, 32, 0.3);
+}
+.survey__submit:active {
+  transform: translateY(-1px);
+}
+.survey__submit:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: 3px;
+}
+
+.survey__decor {
+  position: absolute;
+}
+.survey__decor:nth-of-type(1) {
+  width: 3.5rem;
+  top: 9rem;
+  left: -3rem;
+  transform: rotate(10deg);
+  animation: pulse 4.5s infinite linear;
+}
+.survey__decor:nth-of-type(2) {
+  width: 3.5rem;
+  bottom: 2rem;
+  right: -4rem;
+  transform: rotate(5deg);
+  animation: bird-boy 14s infinite linear;
+}
+.survey__decor:nth-of-type(3) {
+  width: 7.5rem;
+  top: -1.5rem;
+  right: 4rem;
+  animation: bird-girl 14s infinite linear;
+}
+
+/* --- Memory секция --- */
+.memory__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  text-align: center;
+  height: 24rem;
+  background: url("img/memory-border.svg") no-repeat center / contain;
+  position: relative;
+}
+.memory__inner::before {
+  content: "";
+  position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+  top: 4.5rem;
+  left: 6rem;
+  background: url("img/star-twins-img.svg") no-repeat center / contain;
+  animation: pulse 4.5s infinite linear;
+}
+.memory__inner::after {
+  content: "";
+  position: absolute;
+  width: 2.5rem;
+  height: 2.5rem;
+  bottom: 7rem;
+  right: 6rem;
+  background: url("img/heart-with-line-img.svg") no-repeat center / contain;
+  animation: pulse 4.5s infinite linear;
+}
+
+.memory__title {
+  font-family: var(--h-font);
+  font-size: 3.2rem;
+  text-transform: uppercase;
+}
+
+.memory__text {
+  width: 85%;
+}
+
+.memory__link {
+  font-weight: 600;
+  text-transform: uppercase;
+  transition: transform 0.3s ease-in-out;
+}
+.memory__link:hover {
+  transform: translateY(-4px);
+}
+
+/* --- Footer секция --- */
+.footer {
+  padding-bottom: 0;
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  text-align: center;
+}
+
+.footer__title {
+  font-family: var(--h-font);
+  font-size: 4.5rem;
+}
+
+.footer__inner img,
+.footer__firework {
+  display: block;
+  width: 80%;
+  height: auto;
+}
+
+/* Фейерверк «распускается» снизу вверх: каждый элемент проявляется
+   и чуть приподнимается. Задержку --d по вертикали выставляет JS
+   (нижние элементы — первыми, верхние — последними). */
+.footer__firework path {
+  opacity: 0;
+  transform: translateY(4px);
+  transform-box: fill-box;
+  transform-origin: center;
+}
+.footer__firework.is-burst path {
+  animation: fw-rise 0.5s var(--d, 0ms) ease-out forwards;
+}
+
+@keyframes fw-rise {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* уважение к настройке «уменьшить движение»: показываем без анимации */
+@media (prefers-reduced-motion: reduce) {
+  .footer__firework path {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+}
