@@ -109,11 +109,13 @@ section {
 
 /* --- Promo секция --- */
 .promo {
-  height: 100dvh;
+  /* svh (а не dvh): высота стабильна при скролле, поэтому контент промо
+     не «прыгает», когда на мобильных сворачивается адресная строка. */
+  height: 100svh;
 }
 
 .promo__inner {
-  height: calc(100dvh - 8rem);
+  height: calc(100svh - 8rem);
   display: flex;
   flex-direction: column;
   justify-content: end;
@@ -1023,7 +1025,15 @@ section {
   gap: 2rem;
   text-align: center;
   min-height: 24rem;
-  background: url("img/memory-border.svg") no-repeat center / contain;
+  /* Рамка идёт во всю ширину вьюпорта (потолок 440px = размер арта memory-border).
+     Вырываемся из паддинга контейнера и центрируемся; на мобильных это 100vw. */
+  width: min(100vw, 440px);
+  margin-left: 50%;
+  transform: translateX(-50%);
+  /* фон растягиваем ровно по боксу, чтобы рамка шла по краям на любой ширине */
+  background: url("img/memory-border.svg") no-repeat center / 100% 100%;
+  /* отступ под рамку-киноплёнку (красная полоса с дырочками ~18% ширины) */
+  padding: 3.5rem 19%;
   position: relative;
 }
 .memory__inner::before {
@@ -1054,7 +1064,7 @@ section {
 }
 
 .memory__text {
-  width: 85%;
+  width: 100%;
 }
 
 .memory__link {
